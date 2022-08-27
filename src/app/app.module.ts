@@ -1,4 +1,4 @@
-import { EncriptDecriptModule } from './encript-decript/encript-decript.module';
+import { EncriptDecriptModule } from './modules/encript-decript/encript-decript.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 

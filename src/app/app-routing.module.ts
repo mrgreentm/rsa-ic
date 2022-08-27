@@ -3,12 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '/encript-decript',
+    path: 'encript-decript',
     loadChildren: () =>
-      import('./encript-decript/encript-decript.module').then(
+      import('./modules/encript-decript/encript-decript.module').then(
         (m) => m.EncriptDecriptModule
       ),
   },
+  {
+    path: '**',
+    redirectTo: 'encript-decript'
+  }
 ];
 
 @NgModule({

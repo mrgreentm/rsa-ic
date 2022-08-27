@@ -4,7 +4,8 @@ import { CommonModule } from '@angular/common';
 import { EncriptDecriptComponent } from './encript-decript.component';
 
 @NgModule({
-  imports: [CommonModule, EncriptDecriptRoutingModule],
   declarations: [EncriptDecriptComponent],
+  imports: [CommonModule, EncriptDecriptRoutingModule],
+  exports: [EncriptDecriptComponent]
 })
 export class EncriptDecriptModule {}
