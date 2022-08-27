@@ -11,11 +11,13 @@ export class EncriptDecriptComponent implements OnInit {
   constructor() {
     this.form = new FormGroup({
       enteredData: new FormControl(null, [Validators.required]),
-      enteredDataEncripted: new FormControl(null, [Validators.required]),
+      enteredDataEncripted: new FormControl(null),
       primaryKey: new FormControl(null),
       secondatyKey: new FormControl(null),
     })
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.form.get('enteredDataEncripted')?.disable();
+  }
 }

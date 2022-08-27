@@ -1,5 +1,5 @@
 .container {
-  height: 3rem;
+  height: 10vh;
   background-color: #7a1879;
   display: flex;
   align-items: center;
@@ -31,4 +31,7 @@ mat-icon {
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+img {
+  width: 2rem;
 }

@@ -1,15 +1,17 @@
+import { FooterComponent } from './footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModuleModule } from './../material-module/material-module.module';
 import { NgModule } from '@angular/core';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 
-
 @NgModule({
   imports: [MaterialModuleModule, ReactiveFormsModule],
-  declarations: [
-    NavBarComponent
+  declarations: [NavBarComponent, FooterComponent],
+  exports: [
+    MaterialModuleModule,
+    ReactiveFormsModule,
+    NavBarComponent,
+    FooterComponent,
   ],
-  exports: [MaterialModuleModule, ReactiveFormsModule, NavBarComponent],
-
 })
-export class SharedModuleModule { }
+export class SharedModuleModule {}
