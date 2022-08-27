@@ -1,6 +1,12 @@
-<form [formGroup]="form">
-  <mat-form-field appearance="outline">
-    <mat-label>Insira aqui seu texto</mat-label>
-    <input matInput type="text" formControlName="enteredData"/>
-  </mat-form-field>
-</form>
+<div class="container">
+  <form class="form-container" [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Insira aqui seu texto</mat-label>
+      <input matInput type="text" formControlName="enteredData" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Insira aqui seu texto</mat-label>
+      <input matInput type="text" formControlName="enteredDataEncripted"/>
+    </mat-form-field>
+  </form>
+</div>
