@@ -1,3 +1,4 @@
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./encript-decript.component.scss'],
 })
 export class EncriptDecriptComponent implements OnInit {
-  constructor() {}
+  form!: FormGroup;
+  constructor() {
+    this.form = new FormGroup({
+      enteredData: new FormControl(null, [Validators.required]),
+      enteredDataEncripted: new FormControl(null, [Validators.required]),
+      primaryKey: new FormControl(null),
+      secondatyKey: new FormControl(null),
+    })
+  }
 
   ngOnInit() {}
 }
