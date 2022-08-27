@@ -1,10 +1,65 @@
+.container {
+  width: 90vw;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14rem;
+}
+h1 {
+  margin: -110px 0 10px 0;
+  color: #791a78;
+  font-weight: 700;
+}
+p {
+  color: #791a78;
+  font-weight: 300;
+}
 .form-container {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding: 2rem;
+  background-color: #ffcaff;
+  border-radius: 20px;
+  width: 40%;
+  -webkit-box-shadow: 19px -4px 0px 4px #f3c1f3;
+  box-shadow: 19px -4px 0px 4px #f3c1f3;
+}
+mat-form-field {
+  width: 100%;
 }
 .error-message {
   color: red;
   font-weight: 400;
+}
+button {
+  padding: 1rem;
+  border: #ffdaff;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.actions-container {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.encript-button {
+  background-color: #f39393;
+}
+.decript-button {
+  background-color: #b9fdb9;
+}
+.encript-button:hover {
+  box-shadow: 4px -8px 15px -6px #f39393;
+}
+.decript-button:hover {
+  box-shadow: 4px -8px 15px -6px #b9fdb9;
+}
+@media (max-width: 880px) {
+  .container {
+    flex-direction: column;
+    gap: 0;
+  }
 }
