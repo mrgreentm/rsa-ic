@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EncriptDecriptComponent implements OnInit {
   form!: FormGroup;
+  encriptedData: number[] = [];
   constructor() {
     this.form = new FormGroup({
       enteredData: new FormControl(null, [Validators.required]),
@@ -26,7 +27,9 @@ export class EncriptDecriptComponent implements OnInit {
     for (let i = 0; i < enteredData.length; i++) {
       enteredDataInASCII.push(enteredData.charCodeAt(i));
     }
-    console.log(enteredDataInASCII)
+    console.log(enteredDataInASCII);
+    this.generateKeys();
+    this.encriptForEachElement(enteredDataInASCII);
   }
   generateKeys(): void {
     let p;
@@ -54,6 +57,20 @@ export class EncriptDecriptComponent implements OnInit {
     } else {
       this.generateE(totientValue);
     }
+  }
+  encriptForEachElement(enteredDataInASCII: number[]): void {
+    let encriptedData: number[] = [];
+    const n = this.form.get('publicKeys')?.value[0];
+    const e = this.form.get('publicKeys')?.value[1];
+    enteredDataInASCII.forEach((element: number) => {
+      encriptedData.push(Math.floor((Math.pow(element, e/1000) % n)));
+    });
+    encriptedData.forEach((element: number) => {
+      this.encriptedData.push(element);
+    })
+  }
+
+  decriptForEachElement(encriptedData: number[]): void {
   }
 
   generatePrime(): any {
