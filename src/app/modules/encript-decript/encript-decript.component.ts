@@ -43,7 +43,10 @@ export class EncriptDecriptComponent implements OnInit {
     const n = p * q;
     this.form.get('publicKeys')?.value.push(n);
     this.generateE(this.totient(p, q));
-    this.generatePrivateKey(this.totient(p, q));
+    this.generatePrivateKey(
+      this.totient(p, q),
+      this.form.get('publicKeys')?.value[1]
+    );
   }
 
   totient(p: number, q: number): number {
@@ -51,29 +54,41 @@ export class EncriptDecriptComponent implements OnInit {
     return phiN;
   }
   generateE(totientValue: number): any {
-    const possibleE = Math.floor(Math.random() * (totientValue - 1000) + 1000);
+    console.log(totientValue);
+    const possibleE = Math.floor(Math.random() * totientValue - 100) + 100;
     if (possibleE > 1 && possibleE < totientValue) {
+      console.log(possibleE);
       this.form.get('publicKeys')?.value.push(possibleE);
       return possibleE;
     } else {
       this.generateE(totientValue);
     }
   }
-  generatePrivateKey(totienteValue: number): void {
+  /* generatePrivateKey(totienteValue: number): void {
     let d = 0;
-    d = d + 1;
     const e = this.form.get('publicKeys')?.value[1];
     let product = d * e;
-    if(this.mod(product, totienteValue) === 1) {
-      console.log(d)
-    } else {
+    while (this.mod(product, totienteValue) !== 1) {
       this.generatePrivateKey(totienteValue);
     }
-    while (this.mod(product, totienteValue) !== 1) {
-      d = d + 1;
+    this.form.get('privateKeys')?.value.push(d);
+    console.log(this.form);
+  } */
+
+  generatePrivateKey(toti: number, e: number) {
+    console.log('cheguei aqui');
+    var d;
+    d = 0;
+    console.log(d * e);
+    while (this.mod(d * e, toti) !== 1) {
+      console.log(d)
+      d += 1;
     }
     this.form.get('privateKeys')?.value.push(d);
+    console.log(d);
+    return d;
   }
+
   mod(a: number, b: number) {
     let c = 0;
     if (a < b) {
@@ -88,14 +103,33 @@ export class EncriptDecriptComponent implements OnInit {
     const n = this.form.get('publicKeys')?.value[0];
     const e = this.form.get('publicKeys')?.value[1];
     enteredDataInASCII.forEach((element: number) => {
-      encriptedData.push(Math.floor(Math.pow(element, e / 1000) % n));
+      encriptedData.push(Math.floor(Math.pow(element, e) % n));
     });
+    console.log(Math.floor(Math.pow(enteredDataInASCII[0], e)));
+    console.log(encriptedData);
     encriptedData.forEach((element: number) => {
       this.encriptedData.push(element);
     });
   }
+  decriptForEachElement() {
+    var i, decriptedData: number[], result;
+    i = 0;
+    decriptedData = [];
+    let cifra = this.encriptedData;
+    const d = this.form.get('privateKeys')?.value[0];
+    const n = this.form.get('publicKeys')?.value[0];
 
-  decriptForEachElement(encriptedData: number[]): void {}
+    while (i < this.encriptedData.length) {
+      result = Math.pow(cifra[i], d);
+      console.log(cifra[i]);
+      console.log(d);
+      let rest = this.mod(result, n);
+      decriptedData.push(rest);
+      i += 1;
+    }
+    console.log(decriptedData);
+    return decriptedData;
+  }
 
   generatePrime(): any {
     const number = Math.floor(Math.random() * 1000);
