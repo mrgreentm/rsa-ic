@@ -43,10 +43,10 @@ export class EncriptDecriptComponent implements OnInit {
     const n = p * q;
     this.form.get('publicKeys')?.value.push(n);
     this.generateE(this.totient(p, q));
-    this.generatePrivateKey(
+   /*  this.generatePrivateKey(
       this.totient(p, q),
       this.form.get('publicKeys')?.value[1]
-    );
+    ); */
   }
 
   totient(p: number, q: number): number {

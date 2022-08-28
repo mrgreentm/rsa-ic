@@ -8,12 +8,14 @@
 }
 h1 {
   margin: -110px 0 10px 0;
-  color: #791a78;
+  color: #eeeeee;
+  letter-spacing: 0.2rem;
   font-weight: 700;
 }
 p {
-  color: #791a78;
+  color: #eeeeee;
   font-weight: 300;
+  font-size: 1rem;
 }
 .form-container {
   display: flex;
@@ -24,8 +26,8 @@ p {
   background-color: #ffcaff;
   border-radius: 20px;
   width: 40%;
-  -webkit-box-shadow: 19px -4px 0px 4px #f3c1f3;
-  box-shadow: 19px -4px 0px 4px #f3c1f3;
+  -webkit-box-shadow: 30px -10px 5px 5px #f18af1;
+  box-shadow: 30px -10px 5px 5px #f18af1;
 }
 mat-form-field {
   width: 100%;
