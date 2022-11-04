@@ -14,6 +14,8 @@ export class GeneratePublicKeysComponent implements OnInit {
   possibleE!: number;
   e!: number;
   n!: number;
+  p!: number;
+  q!: number;
   dontHasError: boolean = false;
   constructor() {
     this.form = new FormGroup({
@@ -68,6 +70,8 @@ export class GeneratePublicKeysComponent implements OnInit {
     } else {
       this.e = e;
       this.n = p * q;
+      this.p = p;
+      this.q = q;
       this.relativelyPrimeError = false;
     }
   }
