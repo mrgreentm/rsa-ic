@@ -28,7 +28,18 @@
           />
         </mat-form-field>
       </div>
-
+      <button
+        *ngIf="n && e"
+        (click)="
+          savePublicKeys({
+            fileName: 'publicKeys',
+            text: 'e:' + e + '\n' + 'n:' + n
+          })
+        "
+        class="submit"
+      >
+        Salvar Chaves Públicas
+      </button>
       <mat-hint class="tip" *ngIf="n && e"
         >Suas chaves públicas são N: {{ n }} & E: {{ e }}</mat-hint
       >

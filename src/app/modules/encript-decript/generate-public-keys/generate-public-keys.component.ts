@@ -75,10 +75,32 @@ export class GeneratePublicKeysComponent implements OnInit {
     const { p, q } = this.form?.value;
     const totienteValue = this.totient(p, q);
     const possibleE = Math.floor(Math.random() * totienteValue - 100) + 100;
-    if (this.mdc(possibleE, totienteValue) == 1) {
+    if (this.mdc(possibleE, totienteValue) == 1 && possibleE != 1) {
       this.possibleE = possibleE;
     } else {
       this.generatePossibleE();
     }
+  }
+  private setting = {
+    element: {
+      dynamicDownload: null as unknown as HTMLElement,
+    },
+  };
+
+  savePublicKeys(arg: { fileName: string; text: string }): void {
+    if (!this.setting.element.dynamicDownload) {
+      this.setting.element.dynamicDownload = document.createElement('a');
+    }
+    const element = this.setting.element.dynamicDownload;
+    const fileType =
+      arg.fileName.indexOf('.json') > -1 ? 'text/json' : 'text/plain';
+    element.setAttribute(
+      'href',
+      `data:${fileType};charset=utf-8,${encodeURIComponent(arg.text)}`
+    );
+    element.setAttribute('download', arg.fileName);
+
+    var event = new MouseEvent('click');
+    element.dispatchEvent(event);
   }
 }
