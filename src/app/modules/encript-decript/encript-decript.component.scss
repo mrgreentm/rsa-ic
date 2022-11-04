@@ -23,11 +23,10 @@ p {
   justify-content: center;
   flex-direction: column;
   padding: 2rem;
-  background-color: #ffcaff;
+  background-color: #eeeeee;
   border-radius: 20px;
   width: 40%;
-  -webkit-box-shadow: 30px -10px 5px 5px #f18af1;
-  box-shadow: 30px -10px 5px 5px #f18af1;
+  box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
 }
 mat-form-field {
   width: 100%;
