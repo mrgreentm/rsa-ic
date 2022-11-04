@@ -9,9 +9,7 @@
       <input matInput type="text" formControlName="e" />
       <mat-hint
         class="error-message"
-        *ngIf="
-          !form.get('e')?.value && form.get('e')?.touched
-        "
+        *ngIf="!form.get('e')?.value && form.get('e')?.touched"
         >Campo obrigatório!</mat-hint
       >
     </mat-form-field>
@@ -20,9 +18,7 @@
       <input matInput type="text" formControlName="n" />
       <mat-hint
         class="error-message"
-        *ngIf="
-          !form.get('n')?.value && form.get('n')?.touched
-        "
+        *ngIf="!form.get('n')?.value && form.get('n')?.touched"
         >Campo obrigatório!</mat-hint
       >
     </mat-form-field>
@@ -44,13 +40,10 @@
     </div>
     <div class="actions-container">
       <button
-        class="encript-button"
+        class="submit"
         (click)="form.get('enteredData')?.value ? encript() : null"
       >
         Encript
-      </button>
-      <button class="decript-button" (click)="decriptForEachElement()">
-        Decript
       </button>
     </div>
   </form>

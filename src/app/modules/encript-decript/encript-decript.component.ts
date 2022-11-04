@@ -60,23 +60,7 @@ export class EncriptDecriptComponent implements OnInit {
       text: this.encriptedData.toString(),
     });
   }
-  decriptForEachElement() {}
 
-  generatePrime(): any {
-    const number = Math.floor(Math.random() * 1000);
-    let dividers: number[] = [];
-    for (let i = 1; i <= number; i++) {
-      const rest = number % i;
-      if (!rest) {
-        dividers.push(i);
-      }
-    }
-    if (dividers.length === 2 && dividers[0] === 1 && dividers[1] === number) {
-      return dividers[1];
-    } else {
-      this.generatePrime();
-    }
-  }
 
   private setting = {
     element: {
