@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="form-container">
+    <h3 class="principal-label">
+      Gerar Chaves Públicas <mat-icon>key</mat-icon>
+    </h3>
+    <form [formGroup]="form">
+      <div class="mat-form-field-container">
+        <mat-form-field (change)="generatePublicKeys()" appearance="outline">
+          <mat-label>Digite um número primo p</mat-label>
+          <input type="number" formControlName="p" matInput />
+        </mat-form-field>
+
+        <mat-form-field (change)="generatePublicKeys()" appearance="outline">
+          <mat-label>Digite um número primo q</mat-label>
+          <input type="number" formControlName="q" matInput />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label
+            >Digite um número relativamente primo ao produto
+            (p-1)*(q-1)</mat-label
+          >
+          <input
+            (change)="checkE()"
+            type="number"
+            formControlName="e"
+            matInput
+          />
+        </mat-form-field>
+      </div>
+
+      <mat-hint class="tip" *ngIf="n && e"
+        >Suas chaves públicas são N: {{ n }} & E: {{ e }}</mat-hint
+      >
+
+      <mat-hint class="hasError" *ngIf="primeError"
+        >Verifique se p e q são de fato primos.</mat-hint
+      >
+      <mat-hint class="hasError" *ngIf="relativelyPrimeError"
+        >{{ form.get("e")?.value }} não é relativamente primo ao produto
+        (p-1)*(q-1) <mat-icon>sentiment_very_dissatisfied</mat-icon>
+      </mat-hint>
+      <mat-hint class="tip" *ngIf="relativelyPrimeError"
+        >Olha, você pode usar o número <b>{{ possibleE }}</b
+        >, ele é relativamento primo ao produto (p-1)*(q-1)</mat-hint
+      >
+    </form>
+  </div>
+</div>

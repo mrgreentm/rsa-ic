@@ -11,10 +11,10 @@ export class EncriptDecriptComponent implements OnInit {
   encriptedData: number[] = [];
   constructor() {
     this.form = new FormGroup({
-      enteredData: new FormControl(null, [Validators.required]),
-      enteredDataEncripted: new FormControl(null),
-      publicKeys: new FormControl([]),
-      privateKeys: new FormControl([]),
+      enteredData: new FormControl<string>('', [Validators.required]),
+      enteredDataEncripted: new FormControl<number[]>([]),
+      publicKeys: new FormControl<number[]>([]),
+      privateKeys: new FormControl<number[]>([]),
     });
   }
 
@@ -43,7 +43,7 @@ export class EncriptDecriptComponent implements OnInit {
     const n = p * q;
     this.form.get('publicKeys')?.value.push(n);
     this.generateE(this.totient(p, q));
-   /*  this.generatePrivateKey(
+    /*  this.generatePrivateKey(
       this.totient(p, q),
       this.form.get('publicKeys')?.value[1]
     ); */
@@ -81,7 +81,7 @@ export class EncriptDecriptComponent implements OnInit {
     d = 0;
     console.log(d * e);
     while (this.mod(d * e, toti) !== 1) {
-      console.log(d)
+      console.log(d);
       d += 1;
     }
     this.form.get('privateKeys')?.value.push(d);

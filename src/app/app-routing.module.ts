@@ -3,6 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'home',
+    loadChildren: () =>
+      import('./modules/home/home.module').then((m) => m.HomeModule),
+  },
+  {
     path: 'encript-decript',
     loadChildren: () =>
       import('./modules/encript-decript/encript-decript.module').then(
@@ -11,8 +16,8 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'encript-decript'
-  }
+    redirectTo: 'home',
+  },
 ];
 
 @NgModule({

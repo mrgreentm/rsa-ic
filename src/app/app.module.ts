@@ -1,3 +1,4 @@
+import { HomeModule } from './modules/home/home.module';
 import { SharedModuleModule } from './modules/shared-module/shared-module.module';
 import { EncriptDecriptModule } from './modules/encript-decript/encript-decript.module';
 import { NgModule } from '@angular/core';
@@ -17,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     SharedModuleModule,
     FormsModule,
+    HomeModule,
     ReactiveFormsModule,
   ],
   providers: [],
