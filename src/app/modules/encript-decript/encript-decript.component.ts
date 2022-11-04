@@ -35,7 +35,7 @@ export class EncriptDecriptComponent implements OnInit {
           : 0;
       }
     }
-    transformedData.forEach((n) => console.log(n));
+    this.encriptForEachElement(transformedData);
   }
 
   mod(a: number, b: number) {
@@ -47,7 +47,15 @@ export class EncriptDecriptComponent implements OnInit {
       return c;
     }
   }
-  encriptForEachElement(enteredDataInASCII: number[]): void {}
+  encriptForEachElement(transformedEnteredData: number[]): void {
+    const { e, n } = this.form?.value;
+    const encriptedData = [] as number[];
+    transformedEnteredData.forEach((element) => {
+      const value = Math.pow(element, e) % n;
+      encriptedData.push(value);
+    });
+    this.encriptedData = encriptedData;
+  }
   decriptForEachElement() {}
 
   generatePrime(): any {
