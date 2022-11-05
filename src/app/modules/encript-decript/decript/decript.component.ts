@@ -23,7 +23,7 @@ export class DecriptComponent implements OnInit {
   dencript(): void {
     let d: number = 2;
     const { p, q, e, enteredData } = this.form.value;
-    const splitedEnteredData = enteredData.split(' ');
+    const splitedEnteredData = enteredData.split(',');
     this.decriptService
       .desencript({ p, q, e, message: splitedEnteredData })
       .subscribe((res) => {
@@ -31,7 +31,7 @@ export class DecriptComponent implements OnInit {
       });
     this.saveEncriptedData({
       fileName: 'decriptedMessage',
-      text: this.dencriptedData.toString(),
+      text: this.dencriptedData?.toString(),
     });
   }
 
