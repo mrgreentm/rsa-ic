@@ -1,0 +1,87 @@
+.container {
+  width: 90vw;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14rem;
+}
+h1 {
+  margin: -110px 0 10px 0;
+  color: #eeeeee;
+  letter-spacing: 0.2rem;
+  font-weight: 700;
+}
+p {
+  color: #eeeeee;
+  font-weight: 300;
+  font-size: 1rem;
+}
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: #eeeeee;
+  border-radius: 20px;
+  width: 40%;
+  box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+}
+mat-form-field {
+  width: 100%;
+}
+.error-message {
+  color: red;
+  font-weight: 400;
+}
+button {
+  padding: 1rem;
+  border: #ffdaff;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.actions-container {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.encript-button {
+  background-color: #f39393;
+}
+.decript-button {
+  background-color: #b9fdb9;
+}
+.encript-button:hover {
+  box-shadow: 4px -8px 15px -6px #f39393;
+}
+.decript-button:hover {
+  box-shadow: 4px -8px 15px -6px #b9fdb9;
+}
+@media (max-width: 880px) {
+  .container {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+.result-container {
+  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid #00000036;
+  width: 100%;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  b {
+    margin-left: 0.5rem;
+  }
+}
+.submit {
+  border: none;
+  color: #eeeeee;
+  background-color: #172774;
+  padding: 1rem;
+  cursor: pointer;
+  box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+}

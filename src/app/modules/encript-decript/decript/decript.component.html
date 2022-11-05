@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="description-container">
+    <h1>Criptografia Assímetrica</h1>
+    <p>Preencha os campos ao lado e presencie a mágica da Criptografia RSA.</p>
+  </div>
+  <form class="form-container" [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Insira aqui sua chave pública E</mat-label>
+      <input matInput type="text" formControlName="e" />
+      <mat-hint
+        class="error-message"
+        *ngIf="!form.get('e')?.value && form.get('e')?.touched"
+        >Campo obrigatório!</mat-hint
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Insira aqui sua chave privada p</mat-label>
+      <input matInput type="text" formControlName="p" />
+      <mat-hint
+        class="error-message"
+        *ngIf="!form.get('p')?.value && form.get('p')?.touched"
+        >Campo obrigatório!</mat-hint
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Insira aqui sua chave privada q</mat-label>
+      <input matInput type="text" formControlName="q" />
+      <mat-hint
+        class="error-message"
+        *ngIf="!form.get('q')?.value && form.get('q')?.touched"
+        >Campo obrigatório!</mat-hint
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Insira aqui seu texto</mat-label>
+      <input matInput type="text" formControlName="enteredData" />
+      <mat-hint
+        class="error-message"
+        *ngIf="
+          !form.get('enteredData')?.value && form.get('enteredData')?.touched
+        "
+        >Campo obrigatório!</mat-hint
+      >
+    </mat-form-field>
+    <div class="result-container">
+      <b *ngFor="let element of dencriptedData">
+        {{ element }}
+      </b>
+    </div>
+    <div class="actions-container">
+      <button
+        class="submit"
+        (click)="form.get('enteredData')?.value ? dencript() : null"
+      >
+        Encript
+      </button>
+    </div>
+  </form>
+</div>

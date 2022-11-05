@@ -1,3 +1,4 @@
+import { DecriptComponent } from './decript/decript.component';
 import { GeneratePublicKeysComponent } from './generate-public-keys/generate-public-keys.component';
 import { EncriptDecriptComponent } from './encript-decript.component';
 import { NgModule } from '@angular/core';
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'generate-public-keys',
     component: GeneratePublicKeysComponent,
+  },
+  {
+    path: 'decript',
+    component: DecriptComponent,
   },
 ];
 
