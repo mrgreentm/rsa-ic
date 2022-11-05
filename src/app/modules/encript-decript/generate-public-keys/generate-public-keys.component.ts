@@ -79,8 +79,9 @@ export class GeneratePublicKeysComponent implements OnInit {
     const { p, q } = this.form?.value;
     const totienteValue = this.totient(p, q);
     const possibleE = Math.floor(Math.random() * totienteValue - 100) + 100;
-    if (this.mdc(possibleE, totienteValue) == 1 && possibleE != 1) {
+    if (this.mdc(possibleE, totienteValue) == 1 && possibleE > totienteValue) {
       this.possibleE = possibleE;
+      return;
     } else {
       this.generatePossibleE();
     }

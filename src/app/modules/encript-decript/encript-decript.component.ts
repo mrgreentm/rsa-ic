@@ -1,3 +1,4 @@
+import { EncriptService } from './services/encript.service';
 import { Alphabet } from './../shared-module/alphabet';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -11,7 +12,7 @@ export class EncriptDecriptComponent implements OnInit {
   form!: FormGroup;
   encriptedData: number[] = [];
   alphabet = Alphabet.list();
-  constructor() {
+  constructor(private encriptService: EncriptService) {
     this.form = new FormGroup({
       enteredData: new FormControl('', [Validators.required]),
       enteredDataEncripted: new FormControl([]),
@@ -43,24 +44,23 @@ export class EncriptDecriptComponent implements OnInit {
     if (a < b) {
       return a;
     } else {
-      c = a % b;
+      let c = a % b;
       return c;
     }
   }
   encriptForEachElement(transformedEnteredData: number[]): void {
     const { e, n } = this.form?.value;
-    const encriptedData = [] as number[];
-    transformedEnteredData.forEach((element) => {
-      const value = Math.pow(element, e) % n;
-      encriptedData.push(value);
-    });
-    this.encriptedData = encriptedData;
-    this.saveEncriptedData({
-      fileName: 'encriptedMessage',
-      text: this.encriptedData.toString(),
-    });
-  }
+    this.encriptService
+      .encript({ message: transformedEnteredData, n, e })
+      .subscribe((res) => {
+        this.encriptedData = res?.encripted_message;
+        this.saveEncriptedData({
+          fileName: 'encriptedMessage',
+          text: res?.encripted_message.toString(),
+        });
+      });
 
+  }
 
   private setting = {
     element: {

@@ -5,10 +5,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EncriptDecriptComponent } from './encript-decript.component';
 import { SharedModuleModule } from '../shared-module/shared-module.module';
+import { EncriptService } from './services/encript.service';
 
 @NgModule({
   declarations: [EncriptDecriptComponent, GeneratePublicKeysComponent, DecriptComponent],
   imports: [CommonModule, EncriptDecriptRoutingModule, SharedModuleModule],
   exports: [EncriptDecriptComponent, GeneratePublicKeysComponent, DecriptComponent],
+  providers: [EncriptService]
 })
 export class EncriptDecriptModule {}
